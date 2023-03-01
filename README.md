@@ -35,7 +35,7 @@ console.log(timelydiff(timestamp2)); // "4 months ago"
 
 > To generate a timestamp at the current moment and store it for later use, you can use the built-in JavaScript function Date.now(), which returns the number of milliseconds since January 1, 1970, 00:00:00 UTC (Unix timestamp).
 
-
+<br>
 Optionally, you can pass a second parameter to the function to specify the length of the output string. By default, the function will return a string in the format of x [unit] ago/in [x] [unit], but you can choose to return a shorter string by setting the length parameter to "short" or "shorter".
 
 ```javascript
@@ -46,7 +46,7 @@ console.log(timeDiffShort); // "4mo ago"
 //timelydiff(timestamp, "shorter") -> 4mo
 ```
 
-
+<br>
 ### API
 **`timelydiff(timestamp, length)`**
 Converts a Unix timestamp into a human-readable time difference.
@@ -59,11 +59,9 @@ Returns
 A string representing the time difference between the current time and the given timestamp.
 
 <br>
-
 ### Contribution
 Contributions are welcome and appreciated! If you have an idea for an improvement or a bug fix, please feel free to open an issue or submit a pull request. Before submitting a pull request, please ensure that your code follows the existing code style and has been thoroughly tested. Thank you for helping to make TimelyDiff even better!
 
 <br>
-
 ### License
 TimelyDiff is released under the **[MIT License](https://opensource.org/license/mit/)**.
