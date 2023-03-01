@@ -11,7 +11,7 @@ npm i timelydiff
 ```
 
 ### Usage
-To use TimelyDiff, you need to require it in your JavaScript file:
+To use TimelyDiff, you need to import it in your JavaScript file:
 ```javascript
 import { timelydiff } from 'timelydiff';
 ```
