@@ -1,0 +1,28 @@
+{
+  "name": "timelydiff",
+  "version": "1.0.0",
+  "description": "A JavaScript package that converts Unix timestamps into human-readable time differences.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artisticLogicMK/timelydiff.git"
+  },
+  "keywords": [
+    "timelydiff",
+    "time",
+    "unix",
+    "timestamp",
+    "time",
+    "difference",
+    "date"
+  ],
+  "author": "MK",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/artisticLogicMK/timelydiff/issues"
+  },
+  "homepage": "https://github.com/artisticLogicMK/timelydiff#readme"
+}
