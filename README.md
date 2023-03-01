@@ -10,13 +10,6 @@ To install TimelyDiff, you can use NPM:
 npm i timelydiff
 ```
 
-Or, you can add it to your project's dependencies in your package.json file:
-```json
-"dependencies": {
-    "timelydiff": "^1.0.0"
-}
-```
-
 ### Usage
 To use TimelyDiff, you need to require it in your JavaScript file:
 ```javascript
