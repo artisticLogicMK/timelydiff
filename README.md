@@ -16,7 +16,6 @@ Or, you can add it to your project's dependencies in your package.json file:
     "timelydiff": "^1.0.0"
 }
 ```
-<br>
 
 ### Usage
 To use TimelyDiff, you need to require it in your JavaScript file:
@@ -45,7 +44,6 @@ console.log(timeDiffShort); // "4mo ago"
 
 //timelydiff(timestamp, "shorter") -> 4mo
 ```
-<br>
 
 ### API
 **`timelydiff(timestamp, length)`**
