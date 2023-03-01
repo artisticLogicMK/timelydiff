@@ -20,7 +20,7 @@ Or, you can add it to your project's dependencies in your package.json file:
 ### Usage
 To use TimelyDiff, you need to require it in your JavaScript file:
 ```javascript
-const timelydiff = require('timelydiff').timelydiff;
+import { timelydiff } from 'timelydiff';
 ```
 Once you've required the function, you can use it to convert a Unix timestamp into a human-readable time difference:
 ```javascript
