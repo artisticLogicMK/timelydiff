@@ -62,10 +62,10 @@ A string representing the time difference between the current time and the given
 
 <br>
 
-### License
-TimelyDiff is released under the **MIT License**.
+### Contribution
+Contributions are welcome and appreciated! If you have an idea for an improvement or a bug fix, please feel free to open an issue or submit a pull request. Before submitting a pull request, please ensure that your code follows the existing code style and has been thoroughly tested. Thank you for helping to make TimelyDiff even better!
 
 <br>
 
-### Contribution
-Contributions are welcome and appreciated! If you have an idea for an improvement or a bug fix, please feel free to open an issue or submit a pull request. Before submitting a pull request, please ensure that your code follows the existing code style and has been thoroughly tested. Thank you for helping to make TimelyDiff even better!
+### License
+TimelyDiff is released under the **[MIT License](https://opensource.org/license/mit/)**.
