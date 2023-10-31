@@ -1,8 +1,8 @@
 //This function takes a Unix timestamp and an optional length parameter,
 //and returns a human-readable time difference in the past or future.
-function timelydiff(timestamp, length = null) {
+function timelydiff(timestamp, length = null, dateFormat = "default") {
   // handliing check if the timestamp type provided is a number
-  if (typeof timestamp !== "number" || isNaN(timestamp)) {
+  if (typeof timestamp !== "number" || isNaN(timestamp) || timestamp <= 0) {
     throw new Error("Invalid timestamp provided.");
   }
   // handliing check if the length type provided is a string
@@ -10,9 +10,27 @@ function timelydiff(timestamp, length = null) {
     throw new Error("Invalid length parameter.");
   }
 
+   // Error handling for dateFormat
+   const validDateFormats = ["default", "dd/mm/yyyy", "mm/dd/yyyy"];
+   if (!validDateFormats.includes(dateFormat)) {
+     throw new Error("Invalid date format. Please choose a valid date format ('default', 'dd/mm/yyyy', or 'mm/dd/yyyy').");
+   }
+ 
+
   //Calculate the time difference between the current time and the timestamp, in seconds.
   let timeDifference = (Date.now() - timestamp) / 1000;
   let timeDirection = null;
+
+  function formatDate(date) {
+    if (dateFormat === "dd/mm/yyyy") {
+      return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    } else if (dateFormat === "mm/dd/yyyy") {
+      return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+    } else {
+      // default format
+      return date.toDateString();
+    }
+  }
 
   //Determine whether the time difference is in the past or future (is negative)
   //and sets the timeDirection variable accordingly.
