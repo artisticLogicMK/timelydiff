@@ -38,13 +38,29 @@ console.log(timeDiffShort); // "4mo ago"
 //timelydiff(timestamp, "shorter") -> 4mo
 ```
 
+You can also include the time unit that you want to return.
+```javascript
+const timestamp = 1717272724497
+const timeDiffs = timelydiff(timestamp, null, "minutes")
+console.log(timeDiffs)
+
+//timelydiff(timestamp, null, "minutes") -> in 166.665 minutes
+
+const timestamp = 1717272724497
+const timeDiffs = timelydiff(timestamp, "short", "minutes")
+console.log(timeDiffs)
+
+//timelydiff(timestamp, null, "minutes") -> in 166.665m
+```
+
 ### API
-**`timelydiff(timestamp, length)`**
+**`timelydiff(timestamp, length, unit)`**
 Converts a Unix timestamp into a human-readable time difference.
 
 Parameters
 - **`timestamp (number)`** - The Unix timestamp to convert.
 - **`length (string)`** - Optional. The length of the output string. Can be set to **`"short"`** or **`"shorter"`** to return a shorter string. Defaults to **`null`**.
+- **`length (unit)`** - Optional. The time unit to be returned. Can be set to **`"seconds"`**, **`"minutes"`**, **`"hours"`**, **`"days"`**, **`"weeks"`**, **`"months"`**, **`"years"`**, or **`"decades"`**Defaults to **`null`**.
 
 Returns
 A string representing the time difference between the current time and the given timestamp.

@@ -1,6 +1,6 @@
 //This function takes a Unix timestamp and an optional length parameter,
 //and returns a human-readable time difference in the past or future.
-function timelydiff(timestamp, length = null) {
+function timelydiff(timestamp, length = null, unit = null) {
   // handliing check if the timestamp type provided is a number
   if (typeof timestamp !== "number" || isNaN(timestamp)) {
     throw new Error("Invalid timestamp provided.");
@@ -35,7 +35,7 @@ function timelydiff(timestamp, length = null) {
     [{ short: "h", def: "hour" }, Math.round(timeDifference / 3600), 24],
     [{ short: "d", def: "day" }, Math.round(timeDifference / 86400), 7],
     [{ short: "w", def: "week" }, Math.round(timeDifference / 604800), 4],
-    [{ short: "mo", def: "month" }, Math.round(timeDifference / 2419200), 12],
+    [{ short: "mo", def: "month" }, Math.round(timeDifference / 2592000), 12],
     [{ short: "y", def: "year" }, Math.round(timeDifference / 29030400), 10],
     [
       { short: "dcd", def: "decade" },
@@ -53,6 +53,52 @@ function timelydiff(timestamp, length = null) {
     }
   }
 
+  // if the user picks a unit the value may become large and we should add commas
+  function addCommas(num) {
+    num = num.toString()
+    return num.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  }
+
+  function formatString(name, value) {
+    let trunc = Math.trunc(value)
+
+    //if value > 1, pluralize by adding 's'
+    let pluralize = (trunc > 1 || trunc === 0) ? "s" : "";
+
+    const numWithCommas = addCommas(trunc);
+
+    if (length === null) {
+        return positionTime(`${numWithCommas} ${name.def}${pluralize}`);
+    }
+
+    if (length === "short" || length === "shorter") {
+      return positionTime(`${numWithCommas}${name.short}`);
+    }
+  }
+
+  // for when the user selects a specific unit of time to be returned
+  const unitMapping = {
+    'seconds': 0,
+    'minutes': 1,
+    'hours': 2,
+    'days': 3,
+    'weeks': 4,
+    'months': 5,
+    'years': 6,
+    'decades': 7,
+  };
+
+  if (unit !== null) {
+    const unitIndex = unitMapping[unit];
+    if (unitIndex !== undefined) {
+      const [name, value, _] = timeUnits[unitIndex];
+      return formatString(name, value);
+    }
+    else {
+      return 'Could not recognize unit type';
+    }
+  }
+
   //This is a for loop that iterates over each element in the timeUnits array.
   //It checks if the calculated value for that unit is less than the maximum value for that unit.
   //If so, it formats the output string using the positionTime helper function and the length parameter.
@@ -61,20 +107,7 @@ function timelydiff(timestamp, length = null) {
   //it returns a shorter format (e.g. "2h" or "2 hours").
   for (const [name, value, range] of timeUnits) {
     if (value < range) {
-      let trunc = Math.trunc(value);
-
-      //if value > 1, pluralize by adding 's'
-      let pluralize = trunc > 1 ? "s" : "";
-
-      if (length === null) {
-        return positionTime(`${trunc} ${name.def}${pluralize}`);
-      }
-
-      if (length === "short" || length === "shorter") {
-        return positionTime(`${trunc}${name.short}`);
-      }
-
-      break;
+      return formatString(name, value);
     }
   }
 }
