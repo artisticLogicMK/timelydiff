@@ -2,6 +2,11 @@
 
 TimelyDiff is a JavaScript package that converts Unix timestamps into human-readable time differences. It allows you to easily display the time difference between two points in time in a user-friendly manner.
 
+![Downloads](https://img.shields.io/npm/d18m/timelydiff?style=flat&color=%23e94335)
+![NPM Version](https://img.shields.io/npm/v/timelydiff?style=flat&color=%23cd8b62)
+![Minified size (gzip)](https://img.shields.io/bundlejs/size/timelydiff?color=%2312a4a6)
+![NPM License](https://img.shields.io/npm/l/timelydiff?style=flat&color=%23f9bb0a)
+
 [Installation](#installation) | [Usage](#usage) | [API](#API) | [Contribution](#Contribution)
 
 ### Installation
