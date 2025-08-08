@@ -65,9 +65,12 @@ function timelydiff(timestamp, length = null) {
 
       //if value > 1, pluralize by adding 's'
       let pluralize = trunc > 1 ? "s" : "";
+      let pattern = /^(short|shorter)$/;
 
       if (length === null) {
         return positionTime(`${trunc} ${name.def}${pluralize}`);
+      } else if (!pattern.test(length)) {
+        throw new Error("Invalid length parameter. Please use 'short' or 'shorter'.");
       }
 
       if (length === "short" || length === "shorter") {
