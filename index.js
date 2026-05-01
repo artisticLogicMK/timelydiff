@@ -9,6 +9,10 @@ function timelydiff(timestamp, length = null) {
   if (length !== null && typeof length !== "string") {
     throw new Error("Invalid length parameter.");
   }
+  // check if the length type provided is a string and if the value is valid
+  if (length !== null && length !== "short" && length !== "shorter") {
+        throw new Error("Invalid length parameter. Use null, 'short', or 'shorter'.");
+      }
 
   //Calculate the time difference between the current time and the timestamp, in seconds.
   let timeDifference = (Date.now() - timestamp) / 1000;
@@ -35,7 +39,7 @@ function timelydiff(timestamp, length = null) {
     [{ short: "h", def: "hour" }, Math.round(timeDifference / 3600), 24],
     [{ short: "d", def: "day" }, Math.round(timeDifference / 86400), 7],
     [{ short: "w", def: "week" }, Math.round(timeDifference / 604800), 4],
-    [{ short: "mo", def: "month" }, Math.round(timeDifference / 2419200), 12],
+    [{ short: "mo", def: "month" }, Math.round(timeDifference / 2629800), 12], // now avg is 30.44 days
     [{ short: "y", def: "year" }, Math.round(timeDifference / 29030400), 10],
     [
       { short: "dcd", def: "decade" },
